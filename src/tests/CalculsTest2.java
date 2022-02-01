@@ -48,5 +48,34 @@ class CalculsTest2 {
 	        String n = null;
 	        assertNull(n);
 	}
+	
+	@ParameterizedTest(name="Division numéro {index}: nombre1={0}, nombre2={1}, résultat attendu = {2}")
+	@MethodSource("chargerJeuDeTest")
+	void testDiviser(int firstNumber, int secondNumber, int expectedResult) 
+	{
+		// Partie paramétrée
+	        Calculs monCal = new Calculs(firstNumber, secondNumber);
+	        assertEquals(expectedResult, monCal.diviser(), "test en échec pour " + firstNumber + " * " + secondNumber + " != " + expectedResult); 
 
+	}
+	
+	@ParameterizedTest(name="Addition numéro {index}: nombre1={0}, nombre2={1}, résultat attendu = {2}")
+	@MethodSource("chargerJeuDeTest")
+	void testAdditionner(int firstNumber, int secondNumber, int expectedResult) 
+	{
+		// Partie paramétrée
+	        Calculs monCal = new Calculs(firstNumber, secondNumber);
+	        assertEquals(expectedResult, monCal.additionner(), "test en échec pour " + firstNumber + " * " + secondNumber + " != " + expectedResult); 
+
+	}
+	
+	@ParameterizedTest(name="Soustraction numéro {index}: nombre1={0}, nombre2={1}, résultat attendu = {2}")
+	@MethodSource("chargerJeuDeTest")
+	void testSoustraire(int firstNumber, int secondNumber, int expectedResult) 
+	{
+		// Partie paramétrée
+	        Calculs monCal = new Calculs(firstNumber, secondNumber);
+	        assertEquals(expectedResult, monCal.soustraire(), "test en échec pour " + firstNumber + " * " + secondNumber + " != " + expectedResult); 
+
+	}
 }
