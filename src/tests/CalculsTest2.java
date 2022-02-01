@@ -20,24 +20,45 @@ import main.Calculs;
 @RunWith(Parameterized.class)
 class CalculsTest2 {
 
-	@Test
-	void test() 
-	{
-		fail("Not yet implemented");
-	}
-
 	// Fournisseur de données
-    static Stream<Arguments> chargerJeuDeTest() throws Throwable 
+    static Stream<Arguments> chargerJeuDeTestMultiplier() throws Throwable 
     {
         return Stream.of(
             Arguments.of(2,2,4), // appellera : testMultiplier(2,2,4)
             Arguments.of(6,6,36),
-            Arguments.of(3,2,3)
+            Arguments.of(3,2,6)
+        );
+    }
+    
+    static Stream<Arguments> chargerJeuDeTestDiviser() throws Throwable 
+    {
+        return Stream.of(
+            Arguments.of(2,2,1),
+            Arguments.of(9,3,3),
+            Arguments.of(21,3,7)
+        );
+    }
+    
+    static Stream<Arguments> chargerJeuDeTestAdditionner() throws Throwable 
+    {
+        return Stream.of(
+            Arguments.of(2,4,6),
+            Arguments.of(9,3,12),
+            Arguments.of(21,3,24)
         );
     }
 
+    static Stream<Arguments> chargerJeuDeTestSoustraire() throws Throwable 
+    {
+        return Stream.of(
+            Arguments.of(2,2,0),
+            Arguments.of(9,3,6),
+            Arguments.of(2,5,-3)
+        );
+    }
+    
 	@ParameterizedTest(name="Multiplication numéro {index}: nombre1={0}, nombre2={1}, résultat attendu = {2}")
-	@MethodSource("chargerJeuDeTest")
+	@MethodSource("chargerJeuDeTestMultiplier")
 	void testMultiplier(int firstNumber, int secondNumber, int expectedResult) 
 	{
 		// Partie paramétrée
@@ -50,7 +71,7 @@ class CalculsTest2 {
 	}
 	
 	@ParameterizedTest(name="Division numéro {index}: nombre1={0}, nombre2={1}, résultat attendu = {2}")
-	@MethodSource("chargerJeuDeTest")
+	@MethodSource("chargerJeuDeTestDiviser")
 	void testDiviser(int firstNumber, int secondNumber, int expectedResult) 
 	{
 		// Partie paramétrée
@@ -60,7 +81,7 @@ class CalculsTest2 {
 	}
 	
 	@ParameterizedTest(name="Addition numéro {index}: nombre1={0}, nombre2={1}, résultat attendu = {2}")
-	@MethodSource("chargerJeuDeTest")
+	@MethodSource("chargerJeuDeTestAdditionner")
 	void testAdditionner(int firstNumber, int secondNumber, int expectedResult) 
 	{
 		// Partie paramétrée
@@ -70,7 +91,7 @@ class CalculsTest2 {
 	}
 	
 	@ParameterizedTest(name="Soustraction numéro {index}: nombre1={0}, nombre2={1}, résultat attendu = {2}")
-	@MethodSource("chargerJeuDeTest")
+	@MethodSource("chargerJeuDeTestSoustraire")
 	void testSoustraire(int firstNumber, int secondNumber, int expectedResult) 
 	{
 		// Partie paramétrée
