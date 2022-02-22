@@ -43,7 +43,7 @@ class CalculsTest2 {
     {
         return Stream.of(
             Arguments.of(2,4,6),
-            Arguments.of(9,3,12),
+            Arguments.of(9,3243,12),
             Arguments.of(21,3,24)
         );
     }
